@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pomodoro Timer</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="classic-pomodoro">
+      <div class="heading">
+        <h1>Pomodoro Timer - Classic</h1>
+      </div>
+
+      <!-- timer display -->
+      <div class="timer-container">
+        <div class="timer-display">
+          <div class="digit-card">
+            <span id="minutes-tens">2</span>
+          </div>
+          <div class="digit-card">
+            <span id="minutes-ones">5</span>
+          </div>
+          <div class="separator">:</div>
+          <div class="digit-card">
+            <span id="seconds-tens">0</span>
+          </div>
+          <div class="digit-card">
+            <span id="seconds-ones">0</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- buttons -->
+      <div class="control-buttons">
+        <button id="start-btn">Start</button>
+        <button id="pause-btn">Pause</button>
+        <button id="reset-btn">Reset</button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

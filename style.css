@@ -1,0 +1,83 @@
+.heading{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10vh;  /* 10% of viewport height - responsive */
+  
+}
+
+.timer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+   margin: 3vh 0; /* Add vertical spacing */
+}
+
+.control-buttons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5vh;
+  gap: 2vw;
+}
+
+.control-buttons button {
+  padding: 12px 24px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #4f772d;
+  color: white;
+  transition: background-color 1s ease;
+}
+
+.control-buttons button:hover {
+  background-color: #132A13;
+  transform: scale(1.5);
+}
+
+/* for the outside border */
+.classic-pomodoro{
+  margin: auto;
+  width: 50%;
+  border-style:groove;
+  border-width: 5px;
+  border-left-color: rgb(255, 164, 85);
+  border-right-color: rgb(255, 164, 85);
+  border-bottom: none;
+  border-top: none;
+  padding: 10px;
+  border-radius: 44px;
+}
+
+/* timer display */
+.timer-display {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.digit-card {
+  background-color: #90A955;
+  border-radius: 12px;
+  padding: 20px 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  min-width: 60px;
+  text-align: center;
+  border: 2px solid #31572C;
+}
+
+.digit-card span {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #ecf0f1;
+  font-family: 'Courier New', monospace;
+}
+
+.separator {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #2c3e50;
+  margin: 0 10px;
+}
