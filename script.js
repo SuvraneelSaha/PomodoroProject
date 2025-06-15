@@ -47,7 +47,7 @@ function updateDisplay() {
 // Wrong - executes immediately
 // startBtn.addEventListener('click', startTimer());
 // Correct - passes function reference
-startBtn.addEventListener('click', start);
+startBtn.addEventListener('click', startTimer);
 
 // Initialize display
 updateDisplay();
