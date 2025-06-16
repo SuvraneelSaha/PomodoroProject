@@ -5,11 +5,12 @@ let isRunning = false;
 
 // Get DOM elements
 const startBtn = document.getElementById("start-btn");
+const pauseBtn = document.getElementById("pause-btn");
+const resetBtn = document.getElementById("reset-btn");
 const minutesTens = document.getElementById("minutes-tens");
 const minutesOnes = document.getElementById("minutes-ones");
 const secondsTens = document.getElementById("seconds-tens");
 const secondsOnes = document.getElementById("seconds-ones");
-const pauseBtn = document.getElementById("pause-btn");
 
 
 // Start timer function
@@ -17,6 +18,7 @@ function startTimer() {
   if (isRunning === false) {
     isRunning = true;
     startBtn.textContent = "Running...";
+    pauseBtn.textContent="Pause";
 
     timerInterval = setInterval(function () {
       if (totalSeconds <= 0) {
@@ -36,20 +38,92 @@ function startTimer() {
 function updateDisplay() {
   const minutes = Math.floor(totalSeconds / 60);
   const seconds = totalSeconds % 60;
-  
+
   minutesTens.textContent = Math.floor(minutes / 10);
   minutesOnes.textContent = minutes % 10;
   secondsTens.textContent = Math.floor(seconds / 10);
   secondsOnes.textContent = seconds % 10;
 }
 
+// Pause timer
+function pauseTimer() {
+  if(totalSeconds===25*60){
+    startBtn.textContent="Start";
+    return;
+  }
+  clearInterval(timerInterval);
+  isRunning = false;
+  startBtn.textContent = "Resume";
+  pauseBtn.textContent="Paused";
+}
+
+function resetTimer() {
+  clearInterval(timerInterval);
+  isRunning = false;
+  totalSeconds = 25 * 60;
+  startBtn.textContent = "Start";
+  // Update the display
+  updateDisplay();
+}
+
 // Add event listener
 // Wrong - executes immediately
 // startBtn.addEventListener('click', startTimer());
 // Correct - passes function reference
-startBtn.addEventListener('click', startTimer);
+startBtn.addEventListener("click", startTimer);
+
+// Add event listener
+pauseBtn.addEventListener("click", pauseTimer);
+
+// for Reset event listener
+resetBtn.addEventListener("click",resetTimer);
 
 // Initialize display
 updateDisplay();
 
 
+// logic for the Custom Pomodoro 
+// Custom timer variables
+let customTotalSeconds = 25 * 60;
+
+// Get custom timer DOM elements -- input values 
+const customMinutesInput = document.getElementById("custom-minutes");
+const customSecondsInput = document.getElementById("custom-seconds");
+const setCustomBtn = document.getElementById("set-custom-btn");
+
+// Get custom display elements
+const customMinutesTens = document.getElementById("custom-minutes-tens");
+const customMinutesOnes = document.getElementById("custom-minutes-ones");
+const customSecondsTens = document.getElementById("custom-seconds-tens");
+const customSecondsOnes = document.getElementById("custom-seconds-ones");
+
+// Set custom timer function
+function setCustomTimer() {
+  // Get input values
+  const minutes = parseInt(customMinutesInput.value) || 0;
+  const seconds = parseInt(customSecondsInput.value) || 0;
+  
+  // Calculate total seconds
+  customTotalSeconds = (minutes * 60) + seconds;
+  
+  // Update the display
+  updateCustomDisplay();
+}
+
+// Update custom display function
+function updateCustomDisplay() {
+  const minutes = Math.floor(customTotalSeconds / 60);
+  const seconds = customTotalSeconds % 60;
+  
+  // Split into individual digits
+  customMinutesTens.textContent = Math.floor(minutes / 10);
+  customMinutesOnes.textContent = minutes % 10;
+  customSecondsTens.textContent = Math.floor(seconds / 10);
+  customSecondsOnes.textContent = seconds % 10;
+}
+
+// Add event listener for set timer button
+setCustomBtn.addEventListener('click', setCustomTimer);
+
+// Initialize custom display
+updateCustomDisplay();

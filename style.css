@@ -2,7 +2,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 10vh;  /* 10% of viewport height - responsive */
+  /* margin-top: 5vh;   */
+  /* 10% of viewport height - responsive */
+
   
 }
 
@@ -38,7 +40,7 @@
 }
 
 /* for the outside border */
-.classic-pomodoro{
+.classic-pomodoro {
   margin: auto;
   width: 50%;
   border-style:groove;
@@ -80,4 +82,74 @@
   font-weight: bold;
   color: #2c3e50;
   margin: 0 10px;
+}
+/*  Pomodoro Custom Div  */
+.custom-pomodoro{
+  margin: 0 auto;
+  width: 50%;
+  border-style:groove;
+  border-width: 5px;
+  border-left-color: rgb(255, 164, 85);
+  border-right-color: rgb(255, 164, 85);
+  border-bottom: none;
+  border-top: none;
+  padding: 2vh;
+  border-radius: 44px;
+}
+
+/* custom input and Fields  */
+.custom-inputs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1vw;
+  /* margin: 2vh 0; */
+  flex-wrap: wrap;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1vw;
+}
+
+.input-group label {
+  font-weight: bold;
+  color: #31572C;
+}
+
+.input-group input {
+  width: 60px;
+  padding: 8px;
+  border: 2px solid #31572C;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 16px;
+}
+
+#set-custom-btn {
+  padding: 10px 20px;
+  background-color: #90A955;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+#set-custom-btn:hover {
+  background-color: #31572C;
+}
+
+.custom-pomodoro .heading{
+  margin-top: 0;
+}
+
+.heading1{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1vh;
 }
