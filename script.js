@@ -7,6 +7,7 @@ let isRunning = false;
 const startBtn = document.getElementById("start-btn");
 const pauseBtn = document.getElementById("pause-btn");
 const resetBtn = document.getElementById("reset-btn");
+// Classic - Pomodoro Dom elements 
 const minutesTens = document.getElementById("minutes-tens");
 const minutesOnes = document.getElementById("minutes-ones");
 const secondsTens = document.getElementById("seconds-tens");
@@ -85,17 +86,25 @@ updateDisplay();
 // logic for the Custom Pomodoro 
 // Custom timer variables
 let customTotalSeconds = 25 * 60;
+let customTimerInterval = null;
+let customIsRunning=false;
 
 // Get custom timer DOM elements -- input values 
 const customMinutesInput = document.getElementById("custom-minutes");
 const customSecondsInput = document.getElementById("custom-seconds");
 const setCustomBtn = document.getElementById("set-custom-btn");
 
-// Get custom display elements
+// Get custom display elements -- Custom Timer Display 
 const customMinutesTens = document.getElementById("custom-minutes-tens");
 const customMinutesOnes = document.getElementById("custom-minutes-ones");
 const customSecondsTens = document.getElementById("custom-seconds-tens");
 const customSecondsOnes = document.getElementById("custom-seconds-ones");
+
+// Custom Pomodoro - Buttons 
+const customStartBtn = document.getElementById("start-btn-custom");
+const customPauseBtn = document.getElementById("pause-btn-custom");
+const customResetBtn = document.getElementById("reset-btn-custom");
+
 
 // Set custom timer function
 function setCustomTimer() {
@@ -126,4 +135,53 @@ function updateCustomDisplay() {
 setCustomBtn.addEventListener('click', setCustomTimer);
 
 // Initialize custom display
+updateCustomDisplay();
+
+// Custom Start timer function
+function customStartTimer() {
+  if (customIsRunning === false) {
+    customIsRunning = true;
+    customStartBtn.textContent = "Running...";
+    customPauseBtn.textContent="Pause";
+
+    customTimerInterval = setInterval(function () {
+      if (customTotalSeconds <= 0) {
+        clearInterval(customTimerInterval);
+        customIsRunning = false;
+        customStartBtn.textContent = "Start";
+        alert("Time's up!");
+        return;
+      }
+      customTotalSeconds--;
+      updateCustomDisplay();
+    }, 1000);
+  }
+}
+
+// Pause timer
+function customPauseTimer() {
+  clearInterval(customTimerInterval);
+  customIsRunning = false;
+  customStartBtn.textContent = "Resume";
+  customPauseBtn.textContent="Paused";
+}
+
+function customResetTimer() {
+  clearInterval(customTimerInterval);
+  customIsRunning = false;
+  customTotalSeconds = 25 * 60;
+  customStartBtn.textContent = "Start";
+  // Update the display for the Reset Timer 
+  updateCustomDisplay();
+}
+
+customStartBtn.addEventListener("click", customStartTimer);
+
+// Add event listener
+customPauseBtn.addEventListener("click", customPauseTimer);
+
+// for Reset event listener
+customResetBtn.addEventListener("click",customResetTimer);
+
+// Initialize display
 updateCustomDisplay();
